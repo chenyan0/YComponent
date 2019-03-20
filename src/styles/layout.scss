@@ -1,0 +1,76 @@
+.wrapper {
+    .wrapper-navigate {
+        display: block;
+        height: 100vh;
+        overflow-y: scroll;
+        position: fixed;
+        width: 16%;
+        top: 0;
+        .v-menu {
+            color: #515a6e;
+            padding: 15px 0;
+            .navigate-group {
+                font-size: 16px;
+                margin: 8px 0;
+                padding-left: 15px;
+            }
+            .v-menu-item-group-title {
+                height: 48px;
+                line-height: 48px;
+                font-size: 14px;
+                padding-left: 28px;
+                color: #999;
+            }
+            .v-menu-item {
+                padding: 14px 24px;
+                position: relative;
+                cursor: pointer;
+                z-index: 1;
+                transition: all .2s ease-in-out;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                padding-left: 34px;
+                display: block;
+                outline: 0;
+                list-style: none;
+                font-size: 14px;
+                border-right: 2px solid transparent;
+                &.active {
+                    color: #2d8cf0;
+                    background: #f0faff;
+                    border-right: 2px solid #2d8cf0;
+                }
+            }
+        }
+    }
+    .wrapper-content {
+        display: block;
+        margin-left: 16%;
+        width: calc(100% - 16%);
+        height: 100vh;
+        padding-top: 15px;
+        overflow-y: scroll;
+        .section {
+            margin: 20px 60px;
+            .main {
+                margin: 0 20px;
+                .section-label {
+                    color: #303133;
+                    font-weight: bold;
+                    margin: 0 0 10px 0;
+                }
+                h4 {
+                    color: #606266;
+                }
+                .demo-block {
+                    margin-bottom: 24px;
+                    border: 1px solid #ebebeb;
+                    border-radius: 3px;
+                    transition: .2s;
+                    padding: 20px;
+                }
+            }
+        }
+    }
+}
