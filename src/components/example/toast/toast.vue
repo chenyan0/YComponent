@@ -3,7 +3,7 @@
     <div class="section">
         <div class="main">
             <p class="section-label">Toast 轻提示</p>
-            <h4>基本用法</h4>
+            <h4>基础用法</h4>
             <div class="demo-block">
                 <v-button type="primary" size="small" @click="showToast">点击弹出Toast</v-button>
             </div>

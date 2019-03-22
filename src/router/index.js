@@ -11,10 +11,15 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Custom',
-      component: Custom
+      redirect: '/component'
     },
-    ...myPluginRouter
+    {
+      path: '/component',
+      component: Custom,
+      children: [
+        ...myPluginRouter
+      ]
+    },
   ]
 })
 export default router

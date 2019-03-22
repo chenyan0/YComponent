@@ -2,7 +2,7 @@
        <div class="section">
         <div class="main">
           <p class="section-label">Page Group</p>
-          <h4>基本用法</h4>
+          <h4>基础用法</h4>
           <div class="demo-block">
           <v-page :total="82" :pageSizes="5" :pageIndex="curPage" :pagerCount="7" @on-change="onPageChange" />
           </div>

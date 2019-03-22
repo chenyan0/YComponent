@@ -2,7 +2,7 @@
     <div class="section">
         <div class="main">
             <p class="section-label">Select</p>
-            <h4>基本用法</h4>
+            <h4>基础用法</h4>
             <div class="demo-block">
                 <v-select :selectValues="cityList" :v-model="selectValueModel" placeholder="请选择"  @change="onSelectChange($event,'selectValue')"></v-select>
             </div>

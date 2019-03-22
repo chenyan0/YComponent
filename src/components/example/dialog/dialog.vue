@@ -2,7 +2,7 @@
     <div class="section">
         <div class="main">
             <p class="section-label">Dialog 对话框</p>
-            <h4>基本用法</h4>
+            <h4>基础用法</h4>
             <div class="demo-block">
                 <v-button type="primary" size="small" @click="isVisible1=true">显示对话框</v-button>
                 <v-dialog :visible.sync="isVisible1" title="对话框标题" size="small" center @open="openHandle" :closeOnClickModal=false>

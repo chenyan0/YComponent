@@ -20,5 +20,6 @@ export default {
 }
 body{
  overflow: hidden;
+ margin: 0;
 }
 </style>
