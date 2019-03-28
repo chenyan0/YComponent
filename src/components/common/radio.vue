@@ -1,19 +1,17 @@
 <template>
-    <label class="v-radio">
-                            <div class="v-radio-input " :class="{'is-checked':state,'is-disabled':disabled}">
-                                <span class="v-radio-inner"></span>
-                            <input type="radio"  :id="id"
-                            class="v-radio-original"
-                                   :name="name"
-                                   :value="value"
-                                   :class="className"
-                                   :required="required"
-                                   :disabled="disabled"
-                                   @change="onChange"
-                                   :checked="state" >
-                            </div>
-                    
-                            <label for=""><slot></slot></label>
+    <label class="v-radio " :class="{'is-checked':state,'is-disabled':disabled}">
+            <div class="v-radio-input ">
+                <span class="v-radio-inner"></span>
+                <input type="radio"  :id="id"
+                class="v-radio-original"
+                        :value="value"
+                        :class="className"
+                        :required="required"
+                        :disabled="disabled"
+                        @change="onChange"
+                        :checked="state" >
+            </div>
+            <label for=""><slot></slot></label>
     </label>
 </template>
 
@@ -29,10 +27,6 @@
                 default: function() {
                     return 'radio-id-' + this._uid;
                 },
-            },
-            name: {
-                type: String,
-                default: null,
             },
             value: {
                 default: '',
@@ -71,7 +65,7 @@
                 this.toggle();
             },
             toggle() {
-                this.$emit('input', this.state ? '' : this.value, this.name);
+                this.$emit('input', this.state ? '' : this.value);
             }
         },
         mounted() {
@@ -85,6 +79,12 @@
 
 <style lang="scss" scoped>
     $class:'v-radio';
+    @mixin colors($text:inherit, $background:inherit, $border:inherit) {
+        color: $text;
+        background-color: $background;
+        border-color: $border;
+    }
+    
     .#{$class} {
         color: #606266;
         font-weight: 500;
@@ -103,15 +103,16 @@
             position: relative;
             vertical-align: middle;
             .#{$class}-inner {
-                border: 1px solid #dcdfe6;
+                border-width: 1px ;
+                border-style: solid;
                 border-radius: 100%;
                 width: 14px;
                 height: 14px;
-                background-color: #fff;
                 position: relative;
                 cursor: pointer;
                 display: inline-block;
                 box-sizing: border-box;
+                @include colors($background:#fff,$border:#dcdfe6);
                 &:after {
                     width: 4px;
                     height: 4px;
@@ -125,33 +126,6 @@
                     transition: transform .15s ease-in;
                 }
             }
-            &.is-checked {
-                .#{$class}-inner {
-                    border-color: #409eff;
-                    background: #409eff;
-                    &:after {
-                        transform: translate(-50%, -50%) scale(1);
-                    }
-                }
-            }
-            &.is-disabled {
-                .#{$class}-inner {
-                    background-color: #f5f7fa;
-                    border-color: #e4e7ed;
-                    cursor: not-allowed;
-                    &:after {
-                        cursor: not-allowed;
-                        background-color: #f5f7fa;
-                    }
-                }
-            }
-            &.is-disabled.is-checked{
-                .#{$class}-inner {
-                    &:after {
-                        background-color: #c0c4cc;
-                    }
-                }
-            }
         }
         &-original {
             opacity: 0;
@@ -163,6 +137,42 @@
             right: 0;
             bottom: 0;
             margin: 0;
+        }
+    }
+    
+    .is-checked {
+        @extend .#{$class};
+        .#{$class}-inner {
+            @include colors($background: #409eff, $border:#409eff);
+            &:after {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        label {
+            @include colors($text: #409eff);
+        }
+    }
+    
+    .is-disabled {
+        @extend .#{$class};
+        .#{$class}-inner {
+            @include colors($border: #e4e7ed);
+            cursor: not-allowed;
+            &:after {
+                cursor: not-allowed;
+            }
+        }
+        label {
+            @include colors($text: #c0c4cc);
+            cursor: not-allowed;
+        }
+    }
+    
+    .is-disabled.is-checked {
+        .#{$class}-inner {
+            &:after {
+                @include colors($background: #c0c4cc);
+            }
         }
     }
 </style>
