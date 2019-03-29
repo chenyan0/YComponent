@@ -1,9 +1,9 @@
 <template>
-<transition name="move-up">
+<transition  @after-leave="handleAfterLeave">
   <div
     :class="classes"
     :style="{top:top+ 'px'}"
-    v-if="show"
+    v-show="visible"
   >
     <div class="v-message-notice  ">
       <div class="v-message-notice-content">
@@ -21,8 +21,19 @@
 <script>
 export default {
   name: "message",
+  data(){
+    return{
+      visible:false,
+    }
+  },
   props: {
-    duration: Number
+    duration: Number,
+  },
+  methods:{
+     handleAfterLeave() {
+        this.$destroy();
+        this.$el.parentNode.removeChild(this.$el);
+      },
   }
 };
 </script>
@@ -79,11 +90,11 @@ $error-color:red;
     background: #fff;
   }
 }
-.move-up-enter-active{
-  animation: moveIn 3s;
+.v-enter-active{
+  animation: moveIn 1s;
 }
-.move-up-leave-active{
-  animation: moveOut 3s;
+.v-leave-active{
+  animation: moveOut 1s;
 }
 @keyframes moveIn {
     0% {

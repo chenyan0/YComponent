@@ -12,46 +12,44 @@ const iconTypes = {
   'loading': 'spinner'
 }
 const prefixCls = 'v-message'
-function showMessage (type, options = {}) {
+function showMessage(type, options = {}) {
   const messageDom = new MessageConstructor({
-    el: document.createElement('div'),
-    data () {
+    data() {
       return {
         text: typeof options === 'string' ? options : options.text,
         icon: iconTypes[type],
         top: options.top || 16,
-        show: true
       }
     },
     computed: {
-      classes () {
+      classes() {
         return [
           `${prefixCls}`, [`${prefixCls}-${type}`]
         ]
       }
     }
-
-  })
+  }).$mount() //手动地挂载一个未挂载的实例
   document.body.appendChild(messageDom.$el)
+  messageDom.visible = true
   queue.push(messageDom)
-  setTimeout(() => { messageDom.show = false }, options.duration || 3000)
+  setTimeout(() => { messageDom.visible = false }, options.duration || 3000)
 }
 
 export default {
   name: 'message',
-  info (options) {
+  info(options) {
     showMessage('info', options)
   },
-  success (options) {
+  success(options) {
     showMessage('success', options)
   },
-  error (options) {
+  error(options) {
     showMessage('error', options)
   },
-  warning (options) {
+  warning(options) {
     showMessage('warning', options)
   },
-  loading (options) {
+  loading(options) {
     showMessage('loading', options)
   }
 }
