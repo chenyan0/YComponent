@@ -1,7 +1,7 @@
 <template>
-    <div class="v-card">
-        <div class="v-card-title" ref="cardTitle">
-            <slot name="title"></slot>
+    <div class="v-card" :class="classes">
+        <div class="v-card-title" ref="cardTitle" v-if="$slots.header">
+            <slot name="header"></slot>
         </div>
         <div class="v-card-body" ref="cardBody">
             <slot name="img"></slot>
@@ -9,9 +9,9 @@
                 <slot></slot>
             </div>
         </div>
-        <div v-if="isUsed" class="options" >
+        <div v-if="isUsed" class="v-card-footer" >
             <button>分享</button>
-            <button @click="thumbUp">👍<span v-if="this.$store.getters.thumbUp">取消</span>点赞</button>
+            <button>👍点赞</button>
         </div>
     </div>
 </template>
@@ -23,6 +23,11 @@ export default {
         }
     },
     props:{
+         shadow:{
+                type:String,
+                default:'never'
+            },
+           
         option:{
             type:Boolean,
             default:false
@@ -36,11 +41,13 @@ export default {
                 
         }
     },
-    methods:{
-        thumbUp:function(){
-            const status = this.$store.getters.thumbUp;
-            this.$store.dispatch('setUserThumb',!status);   
+    computed:{
+        classes:function(){
+            return  [`is-${this.shadow}-shadow`]
         }
+    },
+    methods:{
+      
     }
 }
 </script>
@@ -50,9 +57,12 @@ export default {
     margin: 10px 0;
     border-radius: 4px;
     transition: all .5s ease ;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    &:hover{
-            box-shadow: 0 0 8px 0px #d2d2d2
+        border: 1px solid #ebeef5;
+    &.is-always-shadow{
+            box-shadow:0 2px 12px 0 rgba(0,0,0,.1)
+    }
+    &.is-hover-shadow:hover{
+            box-shadow:0 2px 12px 0 rgba(0,0,0,.1)
     }
     .v-card-title{
               border-bottom: 1px solid #ebeef5;
@@ -63,12 +73,13 @@ export default {
         text-align: justify;
         padding: 20px;
     }
-    .options{
+    .v-card-footer{
         display: flex;
     justify-content: flex-end;
     align-items: center;
         font-size: 12px;
-        margin-bottom: 10px;
+        padding: 10px 0;
+    border-top: 1px solid #ebeef5;
     button{
        background: #dadada;
     border: 0;

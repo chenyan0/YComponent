@@ -11,8 +11,11 @@
         <router-link to="/component/toast" class="v-menu-item">Toast 轻提示</router-link>
         <router-link to="/component/dialog" class="v-menu-item">Dialog 对话窗</router-link>
         <router-link to="/component/message" class="v-menu-item">Message 全局提示</router-link>
+        <router-link to="/component/tooltip" class="v-menu-item">Tooltip 文字提示</router-link>
         <div class="v-menu-item-group-title">表单</div>
         <router-link to="/component/radio" class="v-menu-item">Radio 单选框</router-link>
+        <router-link to="/component/checkbox" class="v-menu-item">Checkbox 复选框</router-link>
+        <router-link to="/component/switch" class="v-menu-item">Switch 开关</router-link>
         <router-link to="/component/form" class="v-menu-item">Form 表单</router-link>
         <router-link to="/component/select" class="v-menu-item">Select 选择器 </router-link>
         <div class="v-menu-item-group-title">导航</div>

@@ -99,7 +99,6 @@ $button-success-disabled-color: #b3e19d;
   overflow: hidden;
   position: relative;
   text-align: center;
-  margin: 10px 0;
 
   &::after {
     background-color: #000;

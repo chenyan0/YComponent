@@ -1,11 +1,11 @@
 <template>
     <div class="v-tree-node">
-        <div :class="nodeClasses" @dblclick="changeType" @click="toggle">
+        <div :class="nodeClasses" @dblclick="changeType" @click="toggle" >
             <span class="v-tree-expand-icon">
                 <font-awesome-icon :icon="['fas', open ? 'caret-down' : 'caret-right']" class="icon-arrow" v-if="!showIcon && isFolder" />
                 <font-awesome-icon :icon="['fas', opened ? 'folder-open' : 'folder']" class="icon-folder" v-if="showIcon && isFolder" />
             </span>
-            <input type="checkbox" v-if="showCheckbox" :value="model.id" v-model="model.checked" @click="handleCheck($event,model)" />
+            <input type="checkbox" v-if="showCheckbox" :value="model.id" v-model="model.checked"  @change="handleCheck($event,model)"/>
             <span>{{ model.label }}</span>
         </div>
         <transition-group tag="div" class="v-tree-node__children" v-if="isFolder" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter" @before-leave="beforeLeave" @leave="leave" @after-leave="afterLeave">
@@ -49,11 +49,15 @@
             nodeClasses: function() {
                 return [
                     'tree-node', {
-                        // ["tree-leaf"]: !this.isFolder,
                         ["tree-show-icon"]: this.showIcon,
                         ["tree-expend"]: this.open
                     }
                 ];
+            }
+        },
+        watch:{
+            'model.checked'(val,oldval){
+                    this.open = val
             }
         },
         methods: {
@@ -97,6 +101,7 @@
                 if (this.isFolder) {
                     this.open = !this.open
                 }
+console.log('点击的是整个')
             },
             changeType: function() {
                 if (!this.isFolder) {
@@ -104,13 +109,14 @@
                 }
             },
             handleCheck: function($event, el) {
+                console.log(el,$event)
                 if (el.children) {
                     el.children.map(element => {
                         // element.checked=$event.target.checked
                         // return { ...element }
+
                         this.$set(element, 'checked', $event.target.checked)
                         this.handleCheck($event, element)
-                        this.toggle()
                     });
                 }
             },

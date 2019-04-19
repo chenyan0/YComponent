@@ -8,6 +8,9 @@ import Card from './card/card'
 import Page from './page/page'
 import Form from './form/form'
 import Radio from './radio/radio'
+import Checkbox from './checkbox/checkbox'
+import Switch from './switch/switch'
+import Tooltip from './tooltip/tooltip'
 
 export default [
   { path: 'select', component: Select, meta: {title: 'Select 选择器'} },
@@ -20,5 +23,8 @@ export default [
   { path: 'pages', component: Page, meta: {title: 'Page 页码'} },
   { path: 'form', component: Form, meta: {title: 'Form 表单'} },
   { path: 'radio', component: Radio, meta: {title: 'Radio 单选框'} },
+  { path: 'checkbox', component: Checkbox, meta: {title: 'Checkbox 复选框'} },
+  { path: 'switch', component: Switch, meta: {title: 'Switch 开关'} },
+  { path: 'tooltip', component: Tooltip, meta: {title: 'Tooltip 开关'} },
   { path: '', redirect: 'button'}
 ]

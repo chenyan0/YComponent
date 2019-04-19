@@ -36,10 +36,10 @@
         minLength,
         between
     } from "vuelidate/lib/validators"
-    import VCheckboxGroup from "../../common/checkbox-group"
-    import VCheckbox from "../../common/checkbox"
+    import VCheckboxGroup from "../../common/checkbox/checkbox-group"
+    import VCheckbox from "../../common/checkbox/checkbox"
     import VButton from "../../common/button"
-    import VSwitch from "../../common/switch"
+    import VSwitch from "../../common/switch/switch"
     import VInput from "../../common/input"
     import VSelect from "../../common/select"
     

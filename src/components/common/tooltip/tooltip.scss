@@ -1,0 +1,100 @@
+.v-tooltip {
+    font-size: 12px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    &[aria-hidden='true'] {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .15s, visibility .15s;
+    }
+    &[aria-hidden='false'] {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity .15s;
+    }
+    &[x-placement^=bottom] {
+        margin-top: 8px;
+        .tooltip-arrow {
+            border-bottom-color: #303133;
+            top: -8px;
+            border-width: 8px;
+            border-top-width: 0;
+            left: 50%;
+            transform: translateX(-5px);
+        }
+    }
+    &[x-placement^=top] {
+        margin-top: -8px;
+        .tooltip-arrow {
+            border-top-color: #303133;
+            bottom: -8px;
+            border-width: 8px;
+            border-bottom-width: 0;
+            left: 50%;
+            transform: translateX(-5px);
+        }
+    }
+    &[x-placement^=left] {
+        margin-left: -8px;
+        .tooltip-arrow {
+            border-left-color: #303133;
+            bottom: -8px;
+            border-width: 8px;
+            border-right-width: 0;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    &[x-placement^=right] {
+        margin-left: 8px;
+        .tooltip-arrow {
+            border-right-color: #303133;
+            bottom: -8px;
+            border-width: 8px;
+            border-left-width: 0;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    &.is-dark {
+        color: #fff;
+        background: #303133;
+    }
+    &.is-light {
+        background: #fff;
+        border: 1px solid #303133;
+        box-sizing: border-box;
+        .tooltip-arrow:after {
+            content: " ";
+            border-width: 6px;
+            border-top-color: #fff;
+            bottom: 2px;
+            margin-left: -1px;
+            border-bottom-width: 0;
+            left: 50%;
+            transform: translateX(-5px);
+        }
+    }
+    &.visible {
+        display: inline-block;
+    }
+    .tooltip-inner {
+        position: relative;
+        padding: 8px;
+        p {
+            margin: 0;
+        }
+    }
+    .tooltip-arrow,
+    .tooltip-arrow:after {
+        width: 0;
+        height: 0;
+        display: block;
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+    }
+}

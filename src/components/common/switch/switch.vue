@@ -1,12 +1,12 @@
 <template>
-  <div class="v-switch-wrapper">
-    <div :class="wrapperClass">
+  <label class="v-switch-wrapper">
+    <span :class="wrapperClass">
       <input type="checkbox" ref="input" :name="name" :id="id" :disabled="disabled" @change="handleChange">
-    </div>
+    </span>
     <span>
       <slot></slot>
     </span>
-  </div>
+  </label>
 </template>
 <script>
 const prefixCls = `v-switch`;
@@ -77,7 +77,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$height:20px;
+$height:18px;
 $width:40px;
 $higher-color:#39f;
 $lighter-color:#dcdfe6;
@@ -92,23 +92,7 @@ $lighter-color:#dcdfe6;
     overflow: hidden;
     display: inline-block;
     vertical-align: bottom;
-    &.v-switch-disabled {
-      border: 1px solid $lighter-color;
-      cursor: not-allowed;
-      .v-switch-circle {
-        background: $lighter-color;
-      }
-    }
-    &.v-switch-checked {
-      &:after {
-        left: $width - $height;
-        border: 1px solid $higher-color;
-        background: #fff;
-      }
-      &:before {
-        width: 100%;
-      }
-    }
+       margin-right: 4px;
     input {
       width: 100%;
       height: 100%;
@@ -141,6 +125,32 @@ $lighter-color:#dcdfe6;
       top: 0;
       transition: left 0.2s ease;
       content: "";
+    }
+     &.v-switch-disabled {
+      border: 1px solid $lighter-color;
+      cursor: not-allowed;
+          background: #eaecf4;
+          opacity: .6;
+      .v-switch-circle {
+        background: $lighter-color;
+      }
+      input{
+        cursor: not-allowed;
+      }
+      &:after{
+        background: #fff;
+        border: 1px solid $lighter-color;
+      }
+    }
+    &.v-switch-checked {
+      &:after {
+        left: $width - $height;
+        border: 1px solid $higher-color;
+        background: #fff;
+      }
+      &:before {
+        width: 100%;
+      }
     }
   }
 }

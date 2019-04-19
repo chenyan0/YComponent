@@ -11,7 +11,7 @@
                         @change="onChange"
                         :checked="state" >
             </div>
-            <label for=""><slot></slot></label>
+            <label :for="id"><slot></slot></label>
     </label>
 </template>
 
@@ -102,6 +102,9 @@
             line-height: 1;
             position: relative;
             vertical-align: middle;
+            &+label{
+                cursor: pointer;
+            }
             .#{$class}-inner {
                 border-width: 1px ;
                 border-style: solid;
