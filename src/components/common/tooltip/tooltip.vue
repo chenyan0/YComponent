@@ -43,21 +43,6 @@
                 show: true
             }
         },
-        beforeCreate(){
-            this.poperVM= new Vue({
-                data:{
-                    node:''
-                },
-                render(h){
-                    return this.node;
-                }
-            }).$mount();
-        },
-        render:function(h){
-            this.poperVM.node=(
-                <div>哈哈哈哈啊哈哈</div>
-            )
-        },
         watch: {
             show: function(val) {
                 if (val) {
