@@ -1,23 +1,26 @@
 <template>
     <div :class="wrapperClass">
-        <input :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" :readonly="readonly" :placeholder="placeholder" :value="value" :disabled="inputDisabled" @focus="handleFocus" class="v-input-inner" @change="handleChange($event)">
-        <span class="v-input-suffix" v-if="getSuffixVisible">
-                    <span class="v-input__suffix-inner">
-                    <font-awesome-icon
-                        :icon="['far', 'times-circle']"
-                        class="icon-clear"
-                        @click="onClear"
-                        v-if="clearable"
-                      />
-                      <font-awesome-icon
-                        :icon="['far', 'eye']"
-                        class="icon-clear"
-                        v-if="showPassword"
-                        @click="handlePasswordVisible"
-                      />
-                        </span>
-        </span>
-    
+        <template v-if="type!=='textarea'">
+                    <input :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" :readonly="readonly" :placeholder="placeholder" :value="value" :disabled="inputDisabled" @focus="handleFocus" @blur="handleBlur"  class="v-input-inner" @change="handleChange($event)">
+                    <span class="v-input-suffix" v-if="getSuffixVisible">
+                                <span class="v-input__suffix-inner">
+                                <font-awesome-icon
+                                    :icon="['far', 'times-circle']"
+                                    class="icon-clear"
+                                    @click="onClear"
+                                    v-if="clearable"
+                                  />
+                                  <font-awesome-icon
+                                    :icon="['far', 'eye']"
+                                    class="icon-clear"
+                                    v-if="showPassword"
+                                    @click="handlePasswordVisible"
+                                  />
+                                    </span>
+                    </span>
+</template>
+
+        <textarea v-else name="" id="" cols="30" :rows="rows" class="v-textarea-inner" @focus="handleFocus" @blur="handleBlur" @change="handleChange"></textarea>    
     </div>
 </template>
 
@@ -35,7 +38,7 @@
                 type: String,
                 default: ''
             },
-            readonly:{
+            readonly: {
                 type: Boolean,
                 default: false
             },
@@ -59,6 +62,10 @@
                 type: Boolean,
                 default: false
             },
+            rows: {
+                type: String,
+                default: '2'
+            }
         },
         computed: {
             wrapperClass: function() {
@@ -128,12 +135,18 @@
             &:hover {
                 border: 1px solid #c0c4cc;
             }
+                        &:focus {
+                            outline: none;
+                            border-color: #409eff;
+                        }
         }
-        &.is-disabled &-inner {
-            background-color: #f5f7fa;
-            border-color: #e4e7ed;
-            color: #c0c4cc;
-            cursor: not-allowed;
+        &.is-disabled {
+            &-inner {
+                background-color: #f5f7fa;
+                border-color: #e4e7ed;
+                color: #c0c4cc;
+                cursor: not-allowed;
+            }
         }
         &-suffix {
             position: absolute;
@@ -143,6 +156,29 @@
             line-height: 40px;
             width: 30px;
             color: #999;
+        }
+    }
+    
+    .v-textarea-inner {
+        display: block;
+        resize: vertical;
+        padding: 5px 15px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        width: 100%;
+        font-size: inherit;
+        color: #606266;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+         &:hover {
+                border: 1px solid #c0c4cc;
+            }
+        &:focus {
+            outline: none;
+            border-color: #409eff;
         }
     }
 </style>

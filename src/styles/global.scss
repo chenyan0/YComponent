@@ -36,3 +36,22 @@
                 box-shadow: 0 0 0 60px #ffffff inset;
                 -webkit-text-fill-color: #878787;
             }
+            
+            input::-webkit-input-placeholder {
+                color: #cacdd3;
+            }
+            
+            input::-moz-placeholder {
+                /* Mozilla Firefox 19+ */
+                color: #cacdd3;
+            }
+            
+            input:-moz-placeholder {
+                /* Mozilla Firefox 4 to 18 */
+                color: #cacdd3;
+            }
+            
+            input:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: #cacdd3;
+            }

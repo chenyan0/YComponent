@@ -11,6 +11,7 @@ import Radio from './radio/radio'
 import Checkbox from './checkbox/checkbox'
 import Input from './input/input'
 import Switch from './switch/switch'
+import Rate from './rate/rate'
 import Tooltip from './tooltip/tooltip'
   
 export default [
@@ -27,6 +28,7 @@ export default [
   { path: 'checkbox', component: Checkbox, meta: {title: 'Checkbox 复选框'} },
   { path: 'input', component: Input, meta: {title: 'Input 输入框'} },
   { path: 'switch', component: Switch, meta: {title: 'Switch 开关'} },
+  { path: 'rate', component: Rate, meta: {title: 'Rate 评分'} },
   { path: 'tooltip', component: Tooltip, meta: {title: 'Tooltip 开关'} },
   { path: '', redirect: 'button'}
 ]

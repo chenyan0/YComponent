@@ -18,6 +18,10 @@
             <div class="demo-block">
                 <v-input v-model="input4" placeholder="请输入内容" @change="onChange4" show-password></v-input>
             </div>
+            <h4>Textarea</h4>
+            <div class="demo-block">
+                <v-input v-model="input4" placeholder="请输入内容" @change="onChange4" type="textarea" rows="3"></v-input>
+            </div>
         </div>
     </div>
 </template>

@@ -19,6 +19,7 @@
         <router-link to="/component/switch" class="v-menu-item">Switch 开关</router-link>
         <router-link to="/component/form" class="v-menu-item">Form 表单</router-link>
         <router-link to="/component/select" class="v-menu-item">Select 选择器 </router-link>
+        <router-link to="/component/rate" class="v-menu-item">Rate 评分 </router-link>
         <div class="v-menu-item-group-title">导航</div>
         <router-link to="/component/pages" class="v-menu-item">Page 页码</router-link>
       </div>
