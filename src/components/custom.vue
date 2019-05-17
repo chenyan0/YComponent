@@ -22,6 +22,7 @@
         <router-link to="/component/rate" class="v-menu-item">Rate 评分 </router-link>
         <div class="v-menu-item-group-title">导航</div>
         <router-link to="/component/pages" class="v-menu-item">Page 页码</router-link>
+        <router-link to="/component/progress" class="v-menu-item">Progress 进度条</router-link>
       </div>
     </div>
     <div class="wrapper-content">
