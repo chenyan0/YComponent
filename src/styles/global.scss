@@ -1,57 +1,56 @@
-             ::-webkit-scrollbar {
-                width: 5px;
-                height: 5px;
-                background-color: #F5F5F5;
-            }
-            /*定义滚动条轨道 内阴影+圆角*/
-            
-             ::-webkit-scrollbar-track {
-                box-shadow: inset 0 0 6px rgba(226, 226, 226, 0.3);
-                border-radius: 10px;
-                background-color: #FFF;
-            }
-            /*定义滑块 内阴影+圆角*/
-            
-             ::-webkit-scrollbar-thumb {
-                border-radius: 10px;
-                box-shadow: inset 0 0 6px rgba(226, 226, 226, 0.3);
-                background-color: #c1c1c1;
-            }
-            
-            a {
-                color: inherit;
-                text-decoration: none;
-            }
-            
-            ul,
-            li {
-                padding: 0;
-                list-style: none;
-                margin: 0;
-            }
-            
-            input:-webkit-autofill,
-            input:-webkit-autofill:hover,
-            input:-webkit-autofill:focus {
-                box-shadow: 0 0 0 60px #ffffff inset;
-                -webkit-text-fill-color: #878787;
-            }
-            
-            input::-webkit-input-placeholder {
-                color: #cacdd3;
-            }
-            
-            input::-moz-placeholder {
-                /* Mozilla Firefox 19+ */
-                color: #cacdd3;
-            }
-            
-            input:-moz-placeholder {
-                /* Mozilla Firefox 4 to 18 */
-                color: #cacdd3;
-            }
-            
-            input:-ms-input-placeholder {
-                /* Internet Explorer 10-11 */
-                color: #cacdd3;
-            }
+                  ::-webkit-scrollbar {
+                     width: 10px;
+                     height: 5px;
+                     background-color: #F5F5F5;
+                 }
+                 /*定义滚动条轨道 内阴影+圆角*/
+                 
+                  ::-webkit-scrollbar-track {
+                     border-radius: 10px;
+                     background-color: #FFF;
+                 }
+                 /*定义滑块 内阴影+圆角*/
+                 
+                  ::-webkit-scrollbar-thumb {
+                     border-radius: 10px;
+                     box-shadow: inset 0 0 6px rgba(226, 226, 226, 0.3);
+                     background-color: #c1c1c1;
+                 }
+                 
+                 a {
+                     color: inherit;
+                     text-decoration: none;
+                 }
+                 
+                 ul,
+                 li {
+                     padding: 0;
+                     list-style: none;
+                     margin: 0;
+                 }
+                 
+                 input:-webkit-autofill,
+                 input:-webkit-autofill:hover,
+                 input:-webkit-autofill:focus {
+                     box-shadow: 0 0 0 60px #ffffff inset;
+                     -webkit-text-fill-color: #878787;
+                 }
+                 
+                 input::-webkit-input-placeholder {
+                     color: #cacdd3;
+                 }
+                 
+                 input::-moz-placeholder {
+                     /* Mozilla Firefox 19+ */
+                     color: #cacdd3;
+                 }
+                 
+                 input:-moz-placeholder {
+                     /* Mozilla Firefox 4 to 18 */
+                     color: #cacdd3;
+                 }
+                 
+                 input:-ms-input-placeholder {
+                     /* Internet Explorer 10-11 */
+                     color: #cacdd3;
+                 }
