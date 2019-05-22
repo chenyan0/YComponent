@@ -1,30 +1,35 @@
 <template>
     <div class="v-progress" :class="classPrefix">
-        <div class="v-progress-bar" v-if="type=='line'">
+        <div  class="v-progress-bar" v-if="type=='line'" :class="classes">
             <div class="v-progress-outer" :style="outerStyle" ref="outer">
                 <div class="v-progress-inner" :style="innerStyle">
     
                 </div>
             </div>
             <span class="v-progress-text" v-if="showText" :style="textStyle">
-                                    <template v-if="!status">{{percent}}%
+                                            <template v-if="!status">{{percent}}%
 </template>
 
 <template v-else>
-    <font-awesome-icon :icon="['fas', 'check']" class="icon-clear" />
+    <font-awesome-icon :icon="['fas', 'check']" />
 </template>
             </span>
         </div>
-        <div class="v-progress-circle" v-else>
+        <div class="v-progress-circle" v-else :class="classes" :style="{'width':circleWidth+'px','height':circleWidth+'px'}">
             <svg id="circleProgress" ref="circleProgress" xmlns="http://www.w3.org/2000/svg">
-                <circle id="circle" ref="circle" cx="50%" cy="50%" r="40%" :stroke="strokeColor" stroke-width="10" stroke-dashoffset='310%' stroke-linecap="round"></circle>
+                <circle  :cx="circleWidth/2" :cy="circleWidth/2" :r="(circleWidth-strokeWidth)/2" stroke="#e5e5ea" :stroke-width="strokeWidth" stroke-dashoffset='0'></circle>
+                <circle  class="v-progress-circle-stroke" ref="circle" :cx="circleWidth/2" :cy="circleWidth/2" :r="(circleWidth-strokeWidth)/2" :stroke="circleStrokeColor" :stroke-width="strokeWidth" :stroke-dashoffset='(circleWidth-strokeWidth) * 3.14 * (100 - percent) / 100' :stroke-dasharray="(circleWidth-strokeWidth)*3.14" stroke-linecap="round"></circle>
             </svg>
-            <svg id="circleProgress2" xmlns="http://www.w3.org/2000/svg">
-                <circle id="circle" cx="50%" cy="50%" r="40%" stroke="#e5e5ea" stroke-width="9" stroke-dashoffset='0'></circle>
-            </svg>
-            <span class="v-progress-circle-info">{{percent}}%</span>
+            <span class="v-progress-circle-info" v-if="showText"  :style="textStyle">
+<template v-if="!status">
+    {{percent}}%
+</template>
+
+<template v-else>
+    <font-awesome-icon :icon="['fas', 'check']" />
+</template>
+            </span>
         </div>
-<!-- <input id="range" ref="range" type="range" min="0" max="255" step="4" value="360" @input="drawCircle"> -->
     </div>
 </template>
 
@@ -33,17 +38,11 @@
         data() {
             return {
                 percent: this.percentage,
-                rangeValue: 0,
-                rangeText: 0
             }
         },
         props: {
             classPrefix: {
                 type: String,
-            },
-            width: {
-                type: String,
-                default: '200'
             },
             type: {
                 type: String,
@@ -63,11 +62,30 @@
             },
             strokeColor: {
                 type: String,
-                default: '#ffd95a'
-            }
-    
+                default: '#ffc104'
+            },
+            width: {
+                type: Number,
+                default: 200
+            },
+            circleWidth: {
+                type: Number,
+                default: 90
+            },
+            strokeWidth: {
+                type: Number,
+                default: 10
+            },
         },
+         
         computed: {
+            classes(){
+                const prefix = this.type=='circle' ? 'v-progress-circle' : 'v-progress-bar'
+                return [
+                {
+                    [`${prefix}-success`]:this.status == 'success'
+                }]
+            },
             status() {
                 return this.percent === 100 ? 'success' : null
             },
@@ -75,6 +93,10 @@
                 return {
                     color: this.status == 'success' ? '#52c41a' : '#575757'
                 }
+            },
+            circleStrokeColor() {
+                return this.percent === 100 ? '#52c41a' : this.strokeColor
+    
             },
             innerStyle() {
                 const width = this.width;
@@ -102,17 +124,7 @@
                     this.percent = this.percent - this.step
                 }
             },
-            drawCircle() {
-                const range = this.$refs.range
-                const circle = this.$refs.circle
-                const circleProcess = this.$refs.circleProcess
-                this.rangeValue = Number(range.value);
-                circle.setAttribute("stroke-dashoffset", (360 - this.rangeValue) + "%");
-                this.rangeText = Math.ceil(this.rangeValue / 360 * 100)
-            }
         },
-    
-    
     }
 </script>
 
@@ -132,15 +144,15 @@
         &-inner {
             height: 100%;
             border-radius: 10px;
+            transition: width .3s ease;
         }
         &-text {
             font-size: 16px;
-            margin-left: 10px;
+                padding-left: 10px;
             vertical-align: middle;
+            width: 50px;
         }
         &-circle {
-            width: 200px;
-            height: 200px;
             position: relative;
         }
         &-circle-info {
@@ -155,31 +167,12 @@
             line-height: 2.25;
             height: 36px;
         }
-        #circleProgress {
-            position: absolute;
-            
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 200px;
-            stroke-dasharray: 360%;
-            stroke-dashoffset: 360%;
-            fill: none;
-            -webkit-transform: rotate(-90deg);
-            -moz-transform: rotate(-90deg);
-            -ms-transform: rotate(-90deg);
-            -o-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-            z-index: 2;
+        &-circle-stroke {
+            transition: stroke-dashoffset .3s ease, stroke-dasharray .2s ease-in-out, stroke .3s;
         }
-        #circleProgress2 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 200px;
-          stroke-dasharray: 360%;
-            stroke-dashoffset: 360%;
+        #circleProgress {
+            width: 100%;
+            height: 100%;
             fill: none;
             -webkit-transform: rotate(-90deg);
             -moz-transform: rotate(-90deg);
