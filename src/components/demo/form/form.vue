@@ -1,31 +1,36 @@
 <template>
     <div class="section">
         <div class="main" ref="validateForm">
-            <p class="section-label">Form</p>
-            <div class="form-group">
+              <h2 class="section-label">Form 表单</h2>
+            <h4>基础用法</h4>
+            <div class="demo-block">
+            <div class="form-group  ">
                 <label for="">姓名:</label>
-                <v-input v-model="validateForm.username" name="name" id="username" type="text" placeholder="First Name" />
+                <v-input v-model="validateForm.username" :style="{width:'200px'}" name="name" id="username" placeholder="请输入内容" @change="onChange"></v-input>
             </div>
-            <div class="form-group label-p-10">
-                <label for="">上门取件:</label>
-                <v-switch v-model="validateForm.switchValue" size="small" id="pickUp" name="pickUp" @change="onFormChange($event,'switchValue')" />
-            </div>
-            <div class="form-group label-p-10">
+            <div class="form-group ">
                 <label for="">支付方式:</label>
                 <v-select :selectValues="jobValue" :v-model="validateForm.payMethod" :style="{width:'200px'}" placeholder="请选择" clearable @change="onFormChange($event,'payMethod')"></v-select>
     
                 <!-- <v-select v-model="validateForm.payMethod" placeholder="您的支付方式是" :values="jobValue" @change="onFormChange($event,'payMethod')"></v-select> -->
             </div>
-            <div class="form-group label-p-10">
+            <div class="form-group ">
+                <label for="">上门取件:</label>
+                <v-switch v-model="validateForm.switchValue" size="small" id="pickUp" name="pickUp" @change="onFormChange($event,'switchValue')" />
+            </div>
+            <div class="form-group ">
                 <label for="">货物类型:</label>
                 <v-checkbox-group v-model="validateForm.checkboxValue" @on-change="onFormChange($event,'checkboxValue')">
                     <v-checkbox v-for="(i,index) in tags" :key="index" :label="i.label" name="checkbox">{{i.text}}</v-checkbox>
                 </v-checkbox-group>
             </div>
-            <v-button type="primary" size="small" @click="handleSubmit()">提交</v-button>
+           <div class="btn-group">
+               <v-button type="primary" size="small" @click="handleSubmit()">提交</v-button>
             <v-button type="default" size="small">取消</v-button>
             <v-button type="default" size="small" @click="resetForm('validateForm')">重置</v-button>
             <span class="error" v-show="error" ref="error"></span>
+            </div>
+               </div> 
         </div>
     </div>
 </template>
@@ -40,7 +45,7 @@
     import VCheckbox from "../../common/checkbox/checkbox"
     import VButton from "../../common/button"
     import VSwitch from "../../common/switch/switch"
-    import VInput from "../../common/input"
+    import VInput from "../../common/input/input"
     import VSelect from "../../common/select"
     
     export default {
@@ -126,24 +131,24 @@
             .form-group {
                 display: flex;
                 align-items: center;
-                &.label-p-10 {
                     padding: 10px 0;
-                }
+               
                 label {
                     flex: 0 0 15%;
                 }
+                .v-checkbox{
+                    margin-right: 10px;
+                }
+            }
+            .btn-group{
+                    margin-top: 20px;
             }
             .error {
                 color: #f44336;
                 font-size: 12px;
             }
         }
-        .section-label {
-            color: #657180;
-            font-weight: bold;
-            font-size: 18px;
-            margin: 0 0 10px 0;
-        }
+      
         .label {
             display: block;
             background: #f3693d;
@@ -152,20 +157,7 @@
             line-height: 40px;
             text-align: center;
         }
-        .card-body {
-            &:after {
-                content: " ";
-                display: block;
-                height: 0;
-                clear: both;
-                visibility: hidden;
-            }
-            .v-card {
-                margin-right: 20px;
-                width: 300px;
-                float: left;
-            }
-        }
+       
 </style>
 
 

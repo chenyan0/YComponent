@@ -2,7 +2,7 @@
 <template>
     <div class="section">
         <div class="main">
-            <p class="section-label">Toast 轻提示</p>
+            <h2 class="section-label">Toast 轻提示</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
                 <v-button type="primary" size="small" @click="showToast">点击弹出Toast</v-button>
@@ -47,17 +47,5 @@
     }
 </script>
 
-<style lang="scss" scoped>
-    .main {
-        margin: 0 20px;
-    }
-    
-    .section-label {
-        color: #657180;
-        font-weight: bold;
-        font-size: 18px;
-        margin: 0 0 10px 0;
-    }
-</style>
 
 

@@ -2,7 +2,7 @@
 <template>
   <div class="section">
     <div class="main">
-      <p class="section-label">Message 全局提示</p>
+      <h2 class="section-label">Message 全局提示</h2>
       <h4>基础用法</h4>
       <div class="demo-block">
         <v-button type="primary" size="small" @click="showMessage">显示普通消息</v-button>

@@ -1,7 +1,7 @@
 <template>
      <div class="section">
         <div class="main">
-          <h2 class="section-label">Button</h2>
+          <h2 class="section-label">Button 按钮</h2>
           <h4>基础用法</h4>
             <v-button type="default" size="small">default</v-button>
           <v-button type="primary" size="small">primary</v-button>

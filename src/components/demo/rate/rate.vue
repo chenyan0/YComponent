@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="main">
-            <h2 class="section-label">Radio</h2>
+            <h2 class="section-label">Rate 评分</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
                 <v-rate v-model="value" ></v-rate>

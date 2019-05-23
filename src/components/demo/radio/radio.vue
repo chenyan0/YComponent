@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="main">
-            <h2 class="section-label">Radio</h2>
+            <h2 class="section-label">Radio 单选框</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
                 <v-radio name="sex" :value="1" @input="onInput" v-model="radio">北京</v-radio>

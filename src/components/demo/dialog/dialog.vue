@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="main">
-            <p class="section-label">Dialog 对话框</p>
+            <h2 class="section-label">Dialog 对话框</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
                 <v-button type="primary" size="small" @click="isVisible1=true">显示对话框</v-button>

@@ -1,7 +1,7 @@
 <template>
        <div class="section">
         <div class="main">
-          <p class="section-label">Page Group</p>
+          <h2 class="section-label">Page 页码</h2>
           <h4>基础用法</h4>
           <div class="demo-block">
           <v-page :total="82" :pageSizes="5" :pageIndex="curPage" :pagerCount="7" @on-change="onPageChange" />

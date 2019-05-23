@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="main">
-            <h2 class="section-label">Switch 树形控件</h2>
+            <h2 class="section-label">Switch 开关</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
                 <v-switch v-model="value" size="small" id="pickUp" name="pickUp" @change="onFormChange($event,'switchValue')" />

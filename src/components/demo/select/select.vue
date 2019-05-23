@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <div class="main">
-            <p class="section-label">Select</p>
+            <h2 class="section-label">Select 选择器</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
                 <v-select :selectValues="cityList" :v-model="selectValueModel" placeholder="请选择"  @change="onSelectChange($event,'selectValue')"></v-select>
