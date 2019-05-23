@@ -3,15 +3,11 @@
         <div class="v-card-title" ref="cardTitle" v-if="$slots.header">
             <slot name="header"></slot>
         </div>
-        <div class="v-card-body" ref="cardBody">
-            <slot name="img"></slot>
-            <div ref="info">
-                <slot></slot>
-            </div>
+        <div class="v-card-body" ref="cardBody" :style="bodyStyle">
+            <slot></slot>
         </div>
-        <div v-if="isUsed" class="v-card-footer" >
-            <button>分享</button>
-            <button>👍点赞</button>
+        <div class="v-card-footer"  v-if="$slots.footer">
+              <slot name="footer"></slot>
         </div>
     </div>
 </template>
@@ -19,7 +15,6 @@
 export default {
     data(){
         return{
-            isUsed:this.option,
         }
     },
     props:{
@@ -27,28 +22,16 @@ export default {
                 type:String,
                 default:'never'
             },
-           
-        option:{
-            type:Boolean,
-            default:false
-        }
+            bodyStyle:{}
     },
     mounted(){
-        if(this.$slots.img){
-            this.$refs.cardBody.style.padding='0px'
-            this.$refs.info.style.padding='10px 20px'
-            this.$refs.cardTitle.style.padding='0'
-                
-        }
     },
     computed:{
         classes:function(){
             return  [`is-${this.shadow}-shadow`]
         }
     },
-    methods:{
-      
-    }
+ 
 }
 </script>
 <style lang="scss" scoped>
@@ -81,12 +64,14 @@ export default {
         padding: 10px 0;
     border-top: 1px solid #ebeef5;
     button{
-       background: #dadada;
+          background: #26a2ff;
     border: 0;
     outline: none;
     height: 24px;
     width: 60px;
     margin-right: 10px;
+    color: #fff;
+    border-radius: 4px;
     }
     }
 }
