@@ -1,10 +1,10 @@
 
 <template>
-    <div style="display: inline-block;">
+    <div >
         <div ref="trigger">
             <slot></slot>
         </div>
-        <div class="v-tooltip" ref="popover" :class="classes" :x-placement="placement" :aria-hidden="!show">
+        <div class="v-tooltip" ref="popover" :style="tipStyle" :class="classes" :x-placement="placement" :aria-hidden="!show">
             <div class="tooltip-inner">
                 <span class="tooltip-arrow"></span>
                 <slot name="content" v-html="content">{{content}}</slot>
@@ -27,11 +27,17 @@
                 default: 'dark'
             },
             content: {
-                type: String
+                type: [String,Number]
             },
             placement: {
                 type: String,
                 default: 'top'
+            },
+            tipStyle:{
+                type:Object,
+                default:()=>{
+                
+                }
             }
         },
         data() {
@@ -60,8 +66,6 @@
                         case 'left':
                             this.position.left = triger.offsetLeft - popover.offsetWidth;
                             this.position.top = triger.offsetTop + triger.offsetHeight / 2 - popover.offsetHeight / 2;
-                            console.log(popover.offsetWidth)
-    
                             break;
                         case 'right':
                             this.position.left = triger.offsetLeft + triger.offsetWidth;
@@ -70,8 +74,9 @@
                         default:
                             console.log('Wrong placement prop');
                     }
-                    popover.style.top = this.position.top + 'px';
-                    popover.style.left = this.position.left + 'px';
+                        popover.style.top =  this.position.top + 'px';
+                        popover.style.left = this.tipStyle.left ? this.tipStyle.left  : this.position.left + 'px';
+                    
                 }
             },
     
@@ -92,8 +97,6 @@
             this.show = !this.show
         },
         mounted() {
-            console.log(this.$slots.content)
-    
             if (!this.$refs.popover) {
                 return console.error("could't find popovero")
             }

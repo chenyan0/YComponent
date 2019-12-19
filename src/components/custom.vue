@@ -7,6 +7,7 @@
         <router-link to="/component/button" class="v-menu-item">Button 按钮</router-link>
         <router-link to="/component/tree" class="v-menu-item">Tree 树型控件</router-link>
         <router-link to="/component/card" class="v-menu-item">Card 卡片</router-link>
+        <router-link to="/component/slider" class="v-menu-item">Slider 滑块</router-link>
         <div class="v-menu-item-group-title">操作反馈</div>
         <router-link to="/component/toast" class="v-menu-item">Toast 轻提示</router-link>
         <router-link to="/component/dialog" class="v-menu-item">Dialog 对话窗</router-link>

@@ -14,47 +14,47 @@
         transition: opacity .15s;
     }
     &[x-placement^=bottom] {
-        margin-top: 8px;
+        margin-top: 6px;
         .tooltip-arrow {
             border-bottom-color: #303133;
-            top: -8px;
-            border-width: 8px;
+            top: -6px;
+            border-width: 6px;
             border-top-width: 0;
             left: 50%;
             transform: translateX(-5px);
         }
     }
     &[x-placement^=top] {
-        margin-top: -8px;
+        margin-top: -6px;
         .tooltip-arrow {
             border-top-color: #303133;
-            bottom: -8px;
-            border-width: 8px;
+            bottom: -6px;
+            border-width: 6px;
             border-bottom-width: 0;
             left: 50%;
             transform: translateX(-5px);
         }
     }
     &[x-placement^=left] {
-        margin-left: -8px;
+        margin-left: -6px;
         .tooltip-arrow {
             border-left-color: #303133;
-            bottom: -8px;
-            border-width: 8px;
+            bottom: -6px;
+            border-width: 6px;
             border-right-width: 0;
-            right: -8px;
+            right: -6px;
             top: 50%;
             transform: translateY(-50%);
         }
     }
     &[x-placement^=right] {
-        margin-left: 8px;
+        margin-left: 6px;
         .tooltip-arrow {
             border-right-color: #303133;
-            bottom: -8px;
-            border-width: 8px;
+            bottom: -6px;
+            border-width: 6px;
             border-left-width: 0;
-            left: -8px;
+            left: -6px;
             top: 50%;
             transform: translateY(-50%);
         }

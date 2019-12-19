@@ -33,6 +33,12 @@
                    <p slot="content">多行信息<br/>第二行信息</p>
                 </v-tooltip >
             </div>
+            <h4>更多content</h4>
+            <div class="demo-block">
+                <v-tooltip  class="item" effect="dark"  content="0" placement="top" trigger="hover">
+                  <v-button size="small">Dark</v-button>
+                </v-tooltip >
+            </div>
         </div>
     </div>
 </template>
@@ -62,6 +68,8 @@
 </script>
 
 <style lang="scss" scoped>
-    
+    .item{
+        display: inline-block;
+    }
 </style>
 

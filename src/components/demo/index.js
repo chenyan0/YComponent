@@ -17,6 +17,7 @@ const componentsRouter = [
   { path: 'switch', component: () => import('@/components/demo/switch/switch'), meta: { title: 'Switch 开关' } },
   { path: 'rate', component: () => import('@/components/demo/rate/rate'), meta: { title: 'Rate 评分' } },
   { path: 'tooltip', component: () => import('@/components/demo/tooltip/tooltip'), meta: { title: 'Tooltip 开关' } },
+  { path: 'slider', component: () => import('@/components/demo/slider/slider'), meta: { title: 'Slider 滑块' } },
   { path: '', redirect: 'button' }
 ]
 export default componentsRouter

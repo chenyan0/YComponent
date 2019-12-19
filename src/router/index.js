@@ -6,7 +6,7 @@ import Custom from '@/components/custom'
 Vue.use(Router)
 const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
-  mode: 'hash',
+  mode: 'history',
   linkExactActiveClass: 'active',
   routes: [
     {

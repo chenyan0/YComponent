@@ -27,9 +27,15 @@
                 <v-progress :percentage="50" :step="50" strokeColor="#3385ff" type="circle" ref="child2"></v-progress>
 
             </div>
+           
         </div>
     </div>
 </template>
+<style lang="scss" scoped>
+[v-cloak]{
+    display: none
+}
+</style>
 
 <script>
     import VProgress from '@/components/common/progress/progress'
@@ -39,9 +45,13 @@
         },
         data() {
             return {
+                val:1
             }
         },
         methods: {
+            plus(){
+                this.val++
+            },
          increase(){
               this.$refs.child1.handleIncrease();
               this.$refs.child2.handleIncrease();

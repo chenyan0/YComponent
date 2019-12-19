@@ -1,36 +1,36 @@
 <template>
     <div class="section">
         <div class="main" ref="validateForm">
-              <h2 class="section-label">Form 表单</h2>
+            <h2 class="section-label">Form 表单</h2>
             <h4>基础用法</h4>
             <div class="demo-block">
-            <div class="form-group  ">
-                <label for="">姓名:</label>
-                <v-input v-model="validateForm.username" :style="{width:'200px'}" name="name" id="username" placeholder="请输入内容" @change="onChange"></v-input>
-            </div>
-            <div class="form-group ">
-                <label for="">支付方式:</label>
-                <v-select :selectValues="jobValue" :v-model="validateForm.payMethod" :style="{width:'200px'}" placeholder="请选择" clearable @change="onFormChange($event,'payMethod')"></v-select>
+                <div class="form-group  ">
+                    <label for="">姓名:</label>
+                    <v-input v-model="validateForm.username" :style="{width:'200px'}" name="name" id="username" placeholder="请输入内容" @change="onChange"></v-input>
+                </div>
+                <div class="form-group ">
+                    <label for="">支付方式:</label>
+                    <v-select :selectValues="jobValue" :v-model="validateForm.payMethod" :style="{width:'200px'}" placeholder="请选择" clearable @change="onFormChange($event,'payMethod')"></v-select>
     
-                <!-- <v-select v-model="validateForm.payMethod" placeholder="您的支付方式是" :values="jobValue" @change="onFormChange($event,'payMethod')"></v-select> -->
+                    <!-- <v-select v-model="validateForm.payMethod" placeholder="您的支付方式是" :values="jobValue" @change="onFormChange($event,'payMethod')"></v-select> -->
+                </div>
+                <div class="form-group ">
+                    <label for="">上门取件:</label>
+                    <v-switch v-model="validateForm.switchValue" size="small" id="pickUp" name="pickUp" @change="onFormChange($event,'switchValue')" />
+                </div>
+                <div class="form-group ">
+                    <label for="">货物类型:</label>
+                    <v-checkbox-group v-model="validateForm.checkboxValue" @on-change="onFormChange($event,'checkboxValue')">
+                        <v-checkbox v-for="(i,index) in tags" :key="index" :label="i.label" name="checkbox">{{i.text}}</v-checkbox>
+                    </v-checkbox-group>
+                </div>
+                <div class="btn-group">
+                    <v-button type="primary" size="small" @click="handleSubmit()">提交</v-button>
+                    <v-button type="default" size="small">取消</v-button>
+                    <v-button type="default" size="small" @click="resetForm('validateForm')">重置</v-button>
+                    <span class="error" v-show="error" ref="error"></span>
+                </div>
             </div>
-            <div class="form-group ">
-                <label for="">上门取件:</label>
-                <v-switch v-model="validateForm.switchValue" size="small" id="pickUp" name="pickUp" @change="onFormChange($event,'switchValue')" />
-            </div>
-            <div class="form-group ">
-                <label for="">货物类型:</label>
-                <v-checkbox-group v-model="validateForm.checkboxValue" @on-change="onFormChange($event,'checkboxValue')">
-                    <v-checkbox v-for="(i,index) in tags" :key="index" :label="i.label" name="checkbox">{{i.text}}</v-checkbox>
-                </v-checkbox-group>
-            </div>
-           <div class="btn-group">
-               <v-button type="primary" size="small" @click="handleSubmit()">提交</v-button>
-            <v-button type="default" size="small">取消</v-button>
-            <v-button type="default" size="small" @click="resetForm('validateForm')">重置</v-button>
-            <span class="error" v-show="error" ref="error"></span>
-            </div>
-               </div> 
         </div>
     </div>
 </template>
@@ -125,39 +125,36 @@
 </script>
 
 <style lang="scss" scoped>
-  
-        .main {
-            margin: 0 20px;
-            .form-group {
-                display: flex;
-                align-items: center;
-                    padding: 10px 0;
-               
-                label {
-                    flex: 0 0 15%;
-                }
-                .v-checkbox{
-                    margin-right: 10px;
-                }
+    .main {
+        margin: 0 20px;
+        .form-group {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            label {
+                flex: 0 0 15%;
             }
-            .btn-group{
-                    margin-top: 20px;
-            }
-            .error {
-                color: #f44336;
-                font-size: 12px;
+            .v-checkbox {
+                margin-right: 10px;
             }
         }
-      
-        .label {
-            display: block;
-            background: #f3693d;
-            color: #fff;
-            margin-bottom: 10px;
-            line-height: 40px;
-            text-align: center;
+        .btn-group {
+            margin-top: 20px;
         }
-       
+        .error {
+            color: #f44336;
+            font-size: 12px;
+        }
+    }
+    
+    .label {
+        display: block;
+        background: #f3693d;
+        color: #fff;
+        margin-bottom: 10px;
+        line-height: 40px;
+        text-align: center;
+    }
 </style>
 
 
